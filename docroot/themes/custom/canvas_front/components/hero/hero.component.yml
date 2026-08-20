@@ -1,0 +1,39 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Hero
+status: stable
+group: Content
+description: Split hero with title, text and right-side image.
+props:
+  type: object
+  required:
+    - title
+    - image
+  properties:
+    title:
+      type: string
+      title: Title
+      description: Main hero title.
+      examples:
+        - Tahiti
+    text:
+      type: string
+      title: Text
+      description: Supporting text below the title.
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - "<p>The hypnotic beauty of Tahiti comes to life in a suite of jewels crafted from rare black Tahitian pearls.</p>"
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      description: Hero image displayed on the right side.
+      examples:
+        - src: https://placehold.co/900x1200
+          alt: Model wearing pearl jewelry
+          width: 900
+          height: 1200
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Wrapper attributes.

@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Theme override for hero paragraphs.
+ */
+#}
+{{ attach_library('canvas_front/hero') }}
+
+{% set classes = [
+  'paragraph',
+  'paragraph--type--hero',
+  'canvas-hero',
+] %}
+
+<section{{ attributes.addClass(classes) }}>
+  <div class="canvas-hero__content">
+    {% if content.field_title.0 is defined %}
+      <h2 class="canvas-hero__title">{{ content.field_title.0 }}</h2>
+    {% endif %}
+
+    {% if content.field_text.0 is defined %}
+      <div class="canvas-hero__text">
+        {{ content.field_text.0 }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if content.field_image.0 is defined %}
+    <div class="canvas-hero__image">
+      {{ content.field_image.0 }}
+    </div>
+  {% endif %}
+
+  {{ content|without('field_title', 'field_text', 'field_image') }}
+</section>

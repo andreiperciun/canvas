@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Hero SDC template.
+ */
+#}
+
+<section{{ attributes.addClass('hero-sdc') }}>
+  <div class="hero-sdc__content">
+    {% if title is defined and title %}
+      <h2 class="hero-sdc__title">{{ title }}</h2>
+    {% endif %}
+
+    {% if text is defined and text %}
+      <div class="hero-sdc__text">{{ text|raw }}</div>
+    {% endif %}
+  </div>
+
+  {% if image is defined and image %}
+    <div class="hero-sdc__image">
+      {% include 'canvas:image' with image|merge({
+        class: 'hero-sdc__img',
+      }|filter((value) => value is not null)) only %}
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,85 @@
+/**
+ * @file
+ * Hero SDC styles.
+ */
+
+.hero-sdc {
+  --hero-sdc-text: #2f3138;
+  --hero-sdc-muted: #3f4450;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  min-height: clamp(32rem, 68vh, 44rem);
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  overflow: hidden;
+  background: #fff;
+}
+
+.hero-sdc__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.hero-sdc__title {
+  margin-block: 0 1.6rem;
+  color: var(--hero-sdc-text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.hero-sdc__text {
+  max-width: 34rem;
+  color: var(--hero-sdc-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.hero-sdc__text > *:first-child {
+  margin-block-start: 0;
+}
+
+.hero-sdc__text > *:last-child {
+  margin-block-end: 0;
+}
+
+.hero-sdc__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: clamp(0.5rem, 1.25vw, 1rem) clamp(0.75rem, 2vw, 1.5rem)
+    clamp(0.5rem, 1.25vw, 1rem) 0;
+}
+
+.hero-sdc__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 48rem) {
+  .hero-sdc {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-inline: clamp(0.75rem, 4vw, 1.5rem);
+  }
+
+  .hero-sdc__content {
+    min-height: 24rem;
+  }
+
+  .hero-sdc__image {
+    min-height: 24rem;
+    padding: 0;
+  }
+}

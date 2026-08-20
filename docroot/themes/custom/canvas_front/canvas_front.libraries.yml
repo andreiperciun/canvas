@@ -1,0 +1,4 @@
+hero:
+  css:
+    component:
+      css/components/hero.css: {}
