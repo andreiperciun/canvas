@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+## Initialize the local environment: build containers, install dependencies, install Drupal.
+##
+## Usage: fin init
+
+set -e
+
+# Docksal helpers.
+green='\033[0;32m'
+NC='\033[0m'
+echo-green () { echo -e "${green}$1${NC}"; }
+
+cd "${PROJECT_ROOT}"
+
+echo-green "Starting containers..."
+fin project start
+
+echo-green "Installing Composer dependencies..."
+fin composer install --no-interaction
+
+echo-green "Installing Drupal..."
+fin drush site:install standard \
+  --site-name="Canvas" \
+  --account-name=admin \
+  --account-pass=admin \
+  -y
+
+echo-green "Enabling Canvas..."
+fin drush en canvas -y
+
+fin drush cr
+
+echo-green "Done. Login link:"
+fin drush uli

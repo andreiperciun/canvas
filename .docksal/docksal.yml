@@ -1,0 +1,8 @@
+services:
+  # Replace the default stack's Apache with Nginx (drupal vhost preset).
+  web:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: nginx
+    depends_on:
+      - cli
